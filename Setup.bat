@@ -53,11 +53,6 @@ if %errorlevel% equ 0 (
 	git reset --hard origin/main
 	
 	git clean -fd
-	if %errorlevel% neq 0 (
-		echo Git clean failed.
-		pause
-		exit /b 1
-	)
 	echo Update installed, restarting
 	set "gitfile=%temp%\gitresetfile.txt"
 	timeout 2.5 /nobreak

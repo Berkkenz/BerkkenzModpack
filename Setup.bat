@@ -139,7 +139,6 @@ if exist "%appdata%\.minecraft\versions\forge-1.19.2-43.3.7" (
 	echo Set UAC = CreateObject^("Shell.Application"^) > "%temp%\getadmin.vbs"
 	echo UAC.ShellExecute %0, "", "", "runas", 1 >> "%temp%\getadmin.vbs"
 	"%temp%\getadmin.vbs"
-	exit /B
 	
 	call "%~dp0\Content\Exe\forgefile.bat"
 	if %errorlevel% neq 0 (
@@ -148,6 +147,7 @@ if exist "%appdata%\.minecraft\versions\forge-1.19.2-43.3.7" (
 		exit /b 1
 	)
 	
+	if exist "%temp%\getadmin.vbs" del /f "%temp%\getadmin.vbs"
 	echo Forge has installed.
 	goto mcheck
 )

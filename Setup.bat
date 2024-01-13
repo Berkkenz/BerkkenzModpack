@@ -151,7 +151,6 @@ if exist "%appdata%\.minecraft\versions\1.19.2-forge-43.3.7" (
 :install
 echo Deleting configs...
 del /f /q "%appdata%\.minecraft\config"
-pause
 echo Deleted configs.
 echo Deleting mods...
 del /f /q "%appdata%\.minecraft\mods"
@@ -174,10 +173,8 @@ echo Copied resourcepacks.
 echo Copying shaderpacks...
 xcopy "%~dp0\Content\.minecraft\shaderpacks" "%appdata%\.minecraft"
 echo Copied shaderpacks.
-
-exit
 cls
-echo Install completed.
+echo Install completed. Exiting...
 timeout 3 /nobreak
 pause
 exit /b 0

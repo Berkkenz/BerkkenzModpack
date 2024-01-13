@@ -7,6 +7,7 @@ echo %errorlevel%
 if %errorlevel% equ 0 (
 	echo Git is already installed.
 	goto githubcheck
+)
 
 echo Git is not installed. Downloading Git...
 powershell -command "Invoke-WebRequest -Uri 'https://github.com/git-for-windows/git/releases/download/v2.34.1.windows.1/Git-2.34.1-64-bit.exe' -OutFile 'GitInstaller.exe'"
@@ -21,6 +22,15 @@ cls
 cd /d %~dp0
 git fetch
 git diff --quiet HEAD origin/main
+
+if %errorlevel% equ 0 (
+    echo No updates are available.
+    pause
+    exit /b
+) else (
+    echo Updates are available. Downloading...
+	goto githubdownload
+)
 
 :end_script
 pause

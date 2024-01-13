@@ -31,6 +31,8 @@ git diff --quiet HEAD origin/main
 
 if %errorlevel% equ 0 (
     echo Your local repository is up-to-date.
+	pause
+	exit /b
 )
 
 echo Updates are available. Starting update...

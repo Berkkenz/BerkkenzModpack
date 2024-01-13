@@ -79,7 +79,10 @@ if not exist %appdata%\.minecraft (
 echo Minecraft installed.
 :javaone
 echo Checking Java at: "%ProgramFiles%\Java\jre-1.8\bin\java.exe"
+echo %cd%
 if not exist "%ProgramFiles%\Java\jre-1.8\bin\java.exe" (
+	echo Not installed.
+	pause
 	:javaoneinstall
 	cls
 	echo %cd%
@@ -92,6 +95,8 @@ if not exist "%ProgramFiles%\Java\jre-1.8\bin\java.exe" (
 		exit /b 1
 	)
 ) else (
+	echo Installed.
+	pause
 	if %errorlevel% neq 0 (
 		echo %errorlevel%
 		goto javaoneinstall

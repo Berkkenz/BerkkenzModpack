@@ -37,13 +37,20 @@ git fetch origin main
 
 git diff --quiet HEAD origin/main
 if %errorlevel% equ 0 (
-    echo Your local repository is up-to-date.
-	pause
-	exit /b 0
+	if exist %gitfile% (
+		echo Update completed, continuing install...
+		timeout 3 /nobreak
+		goto install
+	) else (
+		echo Your local repository is up-to-date.
+		timeout 3 /nobreak
+		goto install
+	)
 ) else (
 	echo Updates are available. Starting update...
 	git reset --hard origin/main
 		echo Update installed, restarting
+		set gitfile=%temp%\gitresetfile.txt
 		timeout 2.5 /nobreak
 		goto start
 	)

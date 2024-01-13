@@ -63,6 +63,7 @@ if %errorlevel% equ 0 (
 	goto start
 )
 :mcheck
+cls
 if not exist %appdata%\.minecraft (
 	echo Minecraft is not installed on the C drive. Please install Minecraft!
 	pause
@@ -136,12 +137,13 @@ if exist "%appdata%\.minecraft\versions\forge-1.19.2-43.3.7" (
 	pause
 	goto install
 ) else (
-	java -jar "%~dp0\Content\Folders\Exe\forge-1.19.2-43.3.7-installer.jar" --installClient
+	call %~dp0\Content\Exe\forgefile.bat
 	if %errorlevel% neq 0 (
-		echo Forge failed to install.
+		echo Forge install failed.
 		pause
 		exit /b 1
 	)
+	
 	echo Forge has installed.
 	goto mcheck
 )

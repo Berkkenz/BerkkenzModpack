@@ -49,12 +49,19 @@ if %errorlevel% equ 0 (
 ) else (
 	echo Updates are available. Starting update...
 	timeout 3
+	
 	git reset --hard origin/main
-		echo Update installed, restarting
-		set gitfile=%temp%\gitresetfile.txt
-		timeout 2.5 /nobreak
-		goto start
+	
+	git clean -fd
+	if %errorlevel% neq 0 (
+		echo Git clean failed.
+		pause
+		exit /b 1
 	)
+	echo Update installed, restarting
+	set gitfile=%temp%\gitresetfile.txt
+	timeout 2.5 /nobreak
+	goto start
 )
 	
 :install

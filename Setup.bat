@@ -162,16 +162,16 @@ echo Deleting shaderpacks...
 del /f /q "%appdata%\.minecraft\shaderpacks"
 echo Deleted shaderpacks.
 echo Copying configs...
-xcopy "%~dp0\Content\.minecraft\config" "%appdata%\.minecraft"
+xcopy /Y "%~dp0\Content\.minecraft\config" "%appdata%\.minecraft"
 echo Copied configs.
 echo Copying mods...
-xcopy "%~dp0\Content\.minecraft\mods" "%appdata%\.minecraft"
+xcopy /Y "%~dp0\Content\.minecraft\mods" "%appdata%\.minecraft"
 echo Copied mods.
 echo Copying resourcepacks...
-xcopy "%~dp0\Content\.minecraft\resourcepacks" "%appdata%\.minecraft"
+xcopy /Y "%~dp0\Content\.minecraft\resourcepacks" "%appdata%\.minecraft"
 echo Copied resourcepacks.
 echo Copying shaderpacks...
-xcopy "%~dp0\Content\.minecraft\shaderpacks" "%appdata%\.minecraft"
+xcopy /Y "%~dp0\Content\.minecraft\shaderpacks" "%appdata%\.minecraft"
 echo Copied shaderpacks.
 cls
 echo Install completed. Exiting...

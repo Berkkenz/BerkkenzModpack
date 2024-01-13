@@ -138,7 +138,7 @@ if exist "%appdata%\.minecraft\versions\forge-1.19.2-43.3.7" (
 ) else (
 	echo test
 	pause
-	java -jar %~dp0\Content\Folders\Exe\forge-1.19.2-43.3.7-installer.jar --installClient
+	java -jar "%~dp0\Content\Folders\Exe\forge-1.19.2-43.3.7-installer.jar" --installClient
 	if %errorlevel% neq 0 (
 		echo Forge failed to install.
 		pause

@@ -139,7 +139,6 @@ if exist %appdata%\.minecraft\versions\1.19.2 (
 :forgecheck
 if exist "%appdata%\.minecraft\versions\1.19.2-forge-43.3.7" (
 	echo Forge installed.
-	pause
 	goto install
 ) else (
 	call "%~dp0\Content\Exe\forgefile.bat"

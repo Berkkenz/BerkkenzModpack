@@ -175,7 +175,6 @@ echo Copying shaderpacks...
 xcopy "%~dp0\Content\.minecraft\shaderpacks" "%appdata%\.minecraft"
 echo Copied shaderpacks.
 
-if exist "%temp%\getadmin.vbs" del /f "%temp%\getadmin.vbs"
 exit
 cls
 echo Install completed.

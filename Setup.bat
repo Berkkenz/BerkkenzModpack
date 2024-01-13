@@ -13,8 +13,14 @@ if %errorlevel% equ 0 (
 	echo Installing Git...
 	start /wait GitInstaller.exe /VERYSILENT /NORESTART
 	del GitInstaller.exe
-	echo Git installed successfully.
-	goto end_script
+	if %errorlevel% neq 0 (
+		echo Git install failed.
+		pause
+		exit /b 1
+	) else (
+		echo Git installed successfully.
+		timeout 3 /nobreak
+	)
 )
 
 :githubcheck

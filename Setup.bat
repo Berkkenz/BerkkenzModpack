@@ -40,11 +40,11 @@ if %errorlevel% equ 0 (
 	if exist "%temp%\gitresetfile.txt" (
 		echo Update completed, continuing install...
 		timeout 3
-		pause
+		goto install
 	) else (
 		echo Your local repository is up-to-date.
 		timeout 3
-		pause
+		goto install
 	)
 ) else (
 	echo Updates are available. Starting update...
@@ -65,13 +65,6 @@ if %errorlevel% equ 0 (
 )
 	
 :install
-git clean -fd
-if %errorlevel% neq 0 (
-	echo Git clean failed.
-	pause
-	exit /b 1
-)
-
 echo WIP
 pause
 exit /b 0

@@ -50,6 +50,7 @@ if %errorlevel% equ 0 (
 		goto mcheck
 	)
 ) else (
+	cls
 	echo Updates are available. Starting update...
 	timeout 3
 	

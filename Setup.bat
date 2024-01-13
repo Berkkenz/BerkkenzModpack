@@ -38,7 +38,6 @@ if %errorlevel% equ 0 (
 ) else (
     echo Updates are available. Downloading...
 	echo No updates are available.
-    pause
     exit /b
 )
 

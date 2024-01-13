@@ -60,6 +60,6 @@ if %errorlevel% equ 0 (
 )
 	
 :install
-echo WIP
+echo WIP test
 pause
 exit /b 0

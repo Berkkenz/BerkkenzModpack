@@ -146,18 +146,33 @@ if exist %appdata%\.minecraft\versions\forge-1.19.2-43.3.7
 )
 
 :install
+net session >nul 2>&1
+if %errorlevel% == 0 (
+    echo Running with administrative privileges
+    goto :admin
+) else (
+    echo Requesting administrative privileges...
+    goto :uacPrompt
+)
+
+:uacPrompt
+echo Set UAC = CreateObject^("Shell.Application"^) > "%temp%\getadmin.vbs"
+echo UAC.ShellExecute %0, "", "", "runas", 1 >> "%temp%\getadmin.vbs"
+"%temp%\getadmin.vbs"
+exit /B
+
 echo Deleting configs...
-del "%appdata%\.minecraft\config"
+del /f "%appdata%\.minecraft\config" /s
 pause
 echo Deleted configs.
 echo Deleting mods...
-del "%appdata%\.minecraft\mods" /s
+del /f "%appdata%\.minecraft\mods" /s
 echo Deleted mods
 echo Deleting resourcepacks...
-del "%appdata%\.minecraft\resourcepacks" /s
+del /f "%appdata%\.minecraft\resourcepacks" /s
 echo Deleted resourcepacks.
 echo Deleting shaderpacks...
-del "%appdata%\.minecraft\shaderpacks" /s
+del /f "%appdata%\.minecraft\shaderpacks" /s
 echo Deleted shaderpacks.
 echo Copying configs...
 xcopy "%~dp0\Content\.minecraft\config" "%appdata%\.minecraft"
@@ -171,6 +186,9 @@ echo Copied resourcepacks.
 echo Copying shaderpacks...
 xcopy "%~dp0\Content\.minecraft\shaderpacks" "%appdata%\.minecraft"
 echo Copied shaderpacks.
+
+if exist "%temp%\getadmin.vbs" del /f "%temp%\getadmin.vbs"
+exit
 cls
 echo Install completed.
 timeout 3 /nobreak

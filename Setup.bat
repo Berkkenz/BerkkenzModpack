@@ -72,13 +72,13 @@ echo Minecraft installed.
 :javaone
 if exist %ProgramFiles%\Java\jre-1.8\bin\java.exe" (
 	echo Java 1.8 installed
-	pause
 	goto javatwo
 ) else (
 	start /wait %~dp0\Content\Exe\jre-8u391-windows-x64.exe /s
 	if %errorlevel% neq 0 (
 		cls
 		echo Java 1.8 install failed.
+		pause
 		exit /b 1
 	)
 	echo Java 1.8 installed.
@@ -89,13 +89,13 @@ if exist %ProgramFiles%\Java\jre-1.8\bin\java.exe" (
 :javatwo
 if exist %ProgramFiles%Java\jdk-17\bin\java.exe
 	echo Java 17.0.9 installed.
-	pause
 	goto versioncheck
 ) else (
 	echo Downloading JDK 17.0.9...
 	curl -o "%temp%" "https://download.oracle.com/java/17/archive/jdk-17.0.9_windows-x64_bin.exe"
 	if %errorlevel% neq 0 (
 		echo JDK 17.0.9 has failed download.
+		pause
 		exit /b 1
 	)
 	echo Installing JDK 17.0.9...
@@ -146,7 +146,7 @@ if exist %appdata%\.minecraft\versions\forge-1.19.2-43.3.7
 
 :install
 echo Deleting configs...
-del "%appdata%\.minecraft\config" /s
+del "%appdata%\.minecraft\config"
 pause
 echo Deleted configs.
 echo Deleting mods...

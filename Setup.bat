@@ -20,6 +20,12 @@ goto end_script
 :githubcheck
 cls
 cd /d %~dp0
+if not exist ".git" (
+	echo Initializing Git repository...
+	git init
+	git remote add origin https://github.com\Berkkenz\BerkkenzModpack.git
+)
+
 git fetch
 git diff --quiet HEAD origin/main
 
@@ -29,8 +35,10 @@ if %errorlevel% equ 0 (
     exit /b
 ) else (
     echo Updates are available. Downloading...
-	goto githubdownload
+	git pull
 )
+
+
 
 :end_script
 pause

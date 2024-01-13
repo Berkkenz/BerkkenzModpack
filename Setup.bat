@@ -30,7 +30,7 @@ git fetch
 git diff --quiet HEAD origin/main
 
 if %errorlevel% equ 0 (
-    echo Your local repository is up-to-date.
+    echo Your local repository is up-to-date. This is a test
 	pause
 	exit /b
 )
@@ -44,12 +44,7 @@ if %errorlevel% equ 0 (
 	pause
 	exit /b 1
 
-echo Update complete.
-
-if %errorlevel% equ 0 (
-
-
-
+echo Update complete. This is also a test
 
 :end_script
 pause

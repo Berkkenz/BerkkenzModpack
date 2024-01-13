@@ -54,15 +54,16 @@ if %errorlevel% equ 0 (
 		timeout 2.5 /nobreak
 		goto start
 	)
-	
-	:install
-	git clean -fd
-	if %errorlevel% neq 0 (
-		echo Git clean failed.
-		pause
-		exit /b 1
-	)
-	echo WIP
-	pause
-	exit /b 0
 )
+	
+:install
+git clean -fd
+if %errorlevel% neq 0 (
+	echo Git clean failed.
+	pause
+	exit /b 1
+)
+
+echo WIP
+pause
+exit /b 0

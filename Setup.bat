@@ -33,16 +33,10 @@ if not exist ".git" (
 	git remote add origin https://github.com/Berkkenz/BerkkenzModpack.git
 )
 
-echo before git fetch
 git fetch origin main
-echo after git fetch
-pause
-git config --list
-pause
+
 git diff --quiet HEAD origin/main
 if %errorlevel% equ 0 (
-echo diff worked %errorlevel%
-pause
 	if exist "%temp%\gitresetfile.txt" (
 		echo Update completed, continuing install...
 		timeout 3
@@ -54,7 +48,7 @@ pause
 	)
 ) else (
 	echo Updates are available. Starting update...
-	pause
+	timeout 3
 	git reset --hard origin/main
 		echo Update installed, restarting
 		set gitfile=%temp%\gitresetfile.txt

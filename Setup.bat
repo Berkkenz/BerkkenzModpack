@@ -82,11 +82,12 @@ echo Checking Java at: "%ProgramFiles%\Java\jre-1.8\bin\java.exe"
 if exist %ProgramFiles%\Java\jre-1.8\bin\java.exe (
 	if %errorlevel% neq 0 (
 		echo %errorlevel%
-		echo not working
-		pause
+		goto javaoneinstall
+	)
 	echo Java 1.8 installed
 	goto javatwo
 ) else (
+	:javaoneinstall
 	echo %cd%
 	pause
 	start /wait "%~dp0\Content\Exe\jre-8u391-windows-x64.exe" /s

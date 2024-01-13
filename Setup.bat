@@ -42,12 +42,12 @@ if %errorlevel% equ 0 (
 		echo Update completed, continuing install...
 		del %temp%\updatefile.txt
 		timeout 3
-		goto javaone
+		goto mcheck
 	) else (
 		cls
 		echo Your local repository is up-to-date.
 		timeout 3
-		goto javaone
+		goto mcheck
 	)
 ) else (
 	echo Updates are available. Starting update...
@@ -67,7 +67,7 @@ if not exist %appdata%\.minecraft (
 	pause
 	exit /b 1
 )
-	
+pause
 :javaone
 if exist %ProgramFiles%\Java\jre-1.8\bin\java.exe" (
 	goto javatwo

@@ -137,7 +137,7 @@ if exist "%appdata%\.minecraft\versions\forge-1.19.2-43.3.7" (
 	pause
 	goto install
 ) else (
-	call %~dp0\Content\Exe\forgefile.bat
+	call "%~dp0\Content\Exe\forgefile.bat"
 	if %errorlevel% neq 0 (
 		echo Forge install failed.
 		pause

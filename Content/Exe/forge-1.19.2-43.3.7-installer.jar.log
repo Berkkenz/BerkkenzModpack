@@ -1,0 +1,10 @@
+JVM info: Oracle Corporation - 17.0.9 - 17.0.9+11-LTS-201
+java.net.preferIPv4Stack=true
+Current Time: 13/01/2024 07:08:45
+Host: files.minecraftforge.net [51.79.83.165, 2607:5300:203:65a5:0:0:0:0]
+Host: maven.minecraftforge.net [51.79.83.165, 2607:5300:203:65a5:0:0:0:0]
+Host: libraries.minecraft.net [13.107.246.35, 13.107.213.35, 2620:1ec:bdf:0:0:0:0:35, 2620:1ec:46:0:0:0:0:35]
+Host: launchermeta.mojang.com [13.107.246.35, 13.107.213.35, 2620:1ec:46:0:0:0:0:35, 2620:1ec:bdf:0:0:0:0:35]
+Host: piston-meta.mojang.com [13.107.246.35, 13.107.213.35, 2620:1ec:bdf:0:0:0:0:35, 2620:1ec:46:0:0:0:0:35]
+Host: authserver.mojang.com [18.245.96.114, 18.245.96.43, 18.245.96.19, 18.245.96.50]
+Found java version 17.0.9

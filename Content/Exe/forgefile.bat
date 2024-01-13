@@ -13,3 +13,4 @@ if %errorlevel% neq 0 (
 	echo Forge installed!
 	timeout 3
 	exit /b 0
+)

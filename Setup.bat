@@ -43,28 +43,11 @@ if %errorlevel% equ 0 (
 ) else (
 	echo Updates are available. Starting update...
 	git reset --hard origin/main
-	if %errorlevel% neq 0 (
-		echo Update completed, restarting...
-		set countFile=%TEMP%\run_count.txt
-		set /a runCount=0
-		if exist "%countFile%" (
-			set /p runCount=<"%countFile%"
-			set /a runCount+=1
-		) else (
-			set /a runCount=1
-		)
-		echo %runCount% > "%countFile%"
-		echo This script has been ran %runCount% times.
-		if %runCount% equ 3 (
-			echo The git reset has failed.
-			pause
-			exit /b 1
-		)
-		pause
+		echo Git reset failed, continuing...
+		timeout 2.5 /nobreak
 		goto start
 	)
-	if exist "%countFile%" (
-		del %countFile% /s
+	
 	git clean -fd
 	if %errorlevel% neq 0 (
 		echo Git clean failed.

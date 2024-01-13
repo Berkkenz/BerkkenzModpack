@@ -39,7 +39,7 @@ git diff --quiet HEAD origin/main
 if %errorlevel% equ 0 (
     echo Your local repository is up-to-date.
 	pause
-	exit /b
+	exit /b 0
 ) else (
 	echo Updates are available. Starting update...
 	git reset --hard origin/main
@@ -63,6 +63,8 @@ if %errorlevel% equ 0 (
 		pause
 		goto start
 	)
+	if exist "%countFile%" (
+		del %countFile% /s
 	git clean -fd
 	if %errorlevel% neq 0 (
 		echo Git clean failed.

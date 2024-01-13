@@ -55,7 +55,7 @@ if %errorlevel% equ 0 (
 	)
 )
 
-echo Update complete. This is also a test
+echo Update complete. This is a test
 
 :end_script
 pause

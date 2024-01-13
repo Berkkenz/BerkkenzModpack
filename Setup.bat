@@ -27,22 +27,24 @@ if not exist ".git" (
 )
 
 git fetch origin main
-git diff --quiet HEAD origin/main
 
+git diff --quiet HEAD origin/main
 if %errorlevel% equ 0 (
     echo Your local repository is up-to-date.
 	pause
 	exit /b
-)
-
-echo Updates are available. Starting update...
-git reset --hard origin/main
-git clean -fd
-
+) else (
+	echo Updates are available. Starting update...
+	git reset --hard origin/main
+	git clean -fd
 if %errorlevel% equ 0 (
 	echo Git reset failed.
 	pause
 	exit /b 1
+) else (
+	echo Update complete!
+	pause
+)
 
 echo Update complete. This is also a test
 

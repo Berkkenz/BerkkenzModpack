@@ -59,7 +59,7 @@ if %errorlevel% equ 0 (
 		exit /b 1
 	)
 	echo Update installed, restarting
-	set gitfile=%temp%\gitresetfile.txt
+	set "gitfile=%temp%\gitresetfile.txt"
 	timeout 2.5 /nobreak
 	goto start
 )

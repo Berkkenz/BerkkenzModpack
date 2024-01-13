@@ -1,5 +1,5 @@
 @echo off
-setlocal
+setlocal enabledelayedexpansion
 
 :start
 echo Checking if Git is installed...
@@ -78,39 +78,16 @@ if not exist %appdata%\.minecraft (
 
 echo Minecraft installed.
 :javaone
-echo Checking Java at: "%ProgramFiles%\Java\jre-1.8\bin\java.exe"
-echo %cd%
-if not exist "%ProgramFiles%\Java\jre-1.8\bin\java.exe" (
-	echo Not installed.
-	pause
-	:javaoneinstall
-	cls
-	echo %cd%
-	pause
-	start /wait "%~dp0\Content\Exe\jre-8u391-windows-x64.exe" /s
-	if %errorlevel% neq 0 (
-		cls
-		echo Java 1.8 install failed.
-		pause
-		exit /b 1
+if exist %programfiles%\Java\jre-1.8\bin\java.exe" (
+	for /f "tokens=*" %%i in ('%programfiles%\Java\jre-1.8\bin\java.exe -version 2^>^%1') do set JAVA_VERSION=%%i
+	echo %JAVA_VERSION% | findstr /C: "1.8.0_391" > nul
+	if %errorlevel% == 0 (
+		echo Java JRE 1.8.0_391 is installed.
 	) else (
-		echo Java 1.8 installed.
-		pause
-		goto mcheck
-) else (
-	echo Installed.
-	pause
-	if %errorlevel% neq 0 (
-		echo %errorlevel%
-		goto javaoneinstall
+		echo Java JRE 1.8.0_391 is not installed or not the correct version.
 	)
-	echo Java 1.8 installed
-	goto javatwo
-	
-	echo Java 1.8 installed.
-	timeout 2.5 /nobreak
-	goto mcheck
-)
+) else (
+	echo Java JRE 1.8.0_391 Executable is not found.
 
 :javatwo
 if exist %ProgramFiles%Java\jdk-17\bin\java.exe

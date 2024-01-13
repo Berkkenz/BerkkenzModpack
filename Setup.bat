@@ -30,7 +30,7 @@ git fetch origin main
 git diff --quiet HEAD origin/main
 
 if %errorlevel% equ 0 (
-    echo Your local repository is up-to-date. This is a test
+    echo Your local repository is up-to-date.
 	pause
 	exit /b
 )

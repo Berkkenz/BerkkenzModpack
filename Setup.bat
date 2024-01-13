@@ -79,15 +79,9 @@ if not exist %appdata%\.minecraft (
 echo Minecraft installed.
 :javaone
 echo Checking Java at: "%ProgramFiles%\Java\jre-1.8\bin\java.exe"
-if exist "%ProgramFiles%\Java\jre-1.8\bin\java.exe" (
-	if %errorlevel% neq 0 (
-		echo %errorlevel%
-		goto javaoneinstall
-	)
-	echo Java 1.8 installed
-	goto javatwo
-) else (
+if not exist "%ProgramFiles%\Java\jre-1.8\bin\java.exe" (
 	:javaoneinstall
+	cls
 	echo %cd%
 	pause
 	start /wait "%~dp0\Content\Exe\jre-8u391-windows-x64.exe" /s
@@ -97,6 +91,14 @@ if exist "%ProgramFiles%\Java\jre-1.8\bin\java.exe" (
 		pause
 		exit /b 1
 	)
+) else (
+	if %errorlevel% neq 0 (
+		echo %errorlevel%
+		goto javaoneinstall
+	)
+	echo Java 1.8 installed
+	goto javatwo
+	
 	echo Java 1.8 installed.
 	timeout 2.5 /nobreak
 	goto mcheck

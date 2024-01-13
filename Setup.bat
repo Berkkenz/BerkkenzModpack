@@ -40,7 +40,6 @@ if %errorlevel% equ 0 (
 	if exist "%temp%\updatefile.txt" (
 		echo Update completed, continuing install...
 		timeout 3
-		del "%temp%\updatefile.txt" /s
 		goto install
 	) else (
 		echo Your local repository is up-to-date.

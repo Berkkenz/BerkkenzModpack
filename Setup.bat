@@ -78,7 +78,7 @@ if not exist %appdata%\.minecraft (
 
 echo Minecraft installed.
 :javaone
-if exist %ProgramFiles%\Java\jre-1.8\bin\java.exe" (
+if exist %ProgramFiles%\Java\jre-1.8\bin\java.exe (
 	echo Java 1.8 installed
 	goto javatwo
 ) else (

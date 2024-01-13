@@ -24,22 +24,28 @@ if not exist ".git" (
 	echo Initializing Git repository...
 	git init
 	git remote add origin https://github.com/Berkkenz/BerkkenzModpack.git
-	git fetch
-	git branch --set-upstream-to=origin/main main
-) else (
-	git fetch --prune
 )
 
-git status -uno | findstr "Your branch is behind
+git fetch
+git diff --quiet HEAD origin/main
 
 if %errorlevel% equ 0 (
-	git pull origin main --force
-	pause
-) else (
-    echo Updates are available. Downloading...
-	echo No updates are available.
-    exit /b
+    echo Your local repository is up-to-date.
 )
+
+echo Updates are available. Starting update...
+git reset --hard origin/main
+git clean -fd
+
+if %errorlevel% equ 0 (
+	echo Git reset failed.
+	pause
+	exit /b 1
+
+echo Update complete.
+
+if %errorlevel% equ 0 (
+
 
 
 

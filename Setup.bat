@@ -54,7 +54,7 @@ if %errorlevel% equ 0 (
 	
 	git clean -fd
 	echo Update installed, restarting
-	echo UpdateFile > %temp%\updatefile.txt"
+	echo UpdateFile > %temp%\updatefile.txt
 	timeout 2.5 /nobreak
 	goto start
 )

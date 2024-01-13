@@ -15,6 +15,7 @@ if %errorlevel% equ 0 (
 	del GitInstaller.exe
 	echo Git installed successfully.
 	goto end_script
+)
 
 :githubcheck
 cls
@@ -42,9 +43,11 @@ if %errorlevel% equ 0 (
 	)
 	git clean -fd
 	if %errorlevel% neq 0 (
-	echo Git clean failed.
-	pause
-	exit /b 1
+		echo Git clean failed.
+		pause
+		exit /b 1
+	)
+)
 
 echo Update complete. This is also a test
 

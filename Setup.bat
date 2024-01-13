@@ -26,7 +26,7 @@ if not exist ".git" (
 	git remote add origin https://github.com/Berkkenz/BerkkenzModpack.git
 )
 
-git fetch
+git fetch origin main
 git diff --quiet HEAD origin/main
 
 if %errorlevel% equ 0 (

@@ -23,7 +23,7 @@ cd /d %~dp0
 if not exist ".git" (
 	echo Initializing Git repository...
 	git init
-	git remote add origin https://github.com\Berkkenz\BerkkenzModpack.git
+	git remote add origin https://github.com/Berkkenz/BerkkenzModpack.git
 	git fetch
 	git branch --set-upstream-to=origin/main main
 ) else (

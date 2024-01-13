@@ -149,21 +149,6 @@ if exist "%appdata%\.minecraft\versions\1.19.2-forge-43.3.7" (
 )
 
 :install
-net session >nul 2>&1
-if %errorlevel% == 0 (
-    echo Running with administrative privileges
-    goto :admin
-) else (
-    echo Requesting administrative privileges...
-    goto :uacPrompt
-)
-
-:uacPrompt
-echo Set UAC = CreateObject^("Shell.Application"^) > "%temp%\getadmin.vbs"
-echo UAC.ShellExecute %0, "", "", "runas", 1 >> "%temp%\getadmin.vbs"
-"%temp%\getadmin.vbs"
-exit /B
-
 echo Deleting configs...
 del /f "%appdata%\.minecraft\config" /s
 pause

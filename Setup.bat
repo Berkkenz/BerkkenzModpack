@@ -82,7 +82,9 @@ if exist %ProgramFiles%\Java\jre-1.8\bin\java.exe" (
 	echo Java 1.8 installed
 	goto javatwo
 ) else (
-	start /wait %~dp0\Content\Exe\jre-8u391-windows-x64.exe /s
+	echo %cd%
+	pause
+	start /wait "%~dp0\Content\Exe\jre-8u391-windows-x64.exe" /s
 	if %errorlevel% neq 0 (
 		cls
 		echo Java 1.8 install failed.

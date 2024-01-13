@@ -42,12 +42,12 @@ if %errorlevel% equ 0 (
 		echo Update completed, continuing install...
 		del %temp%\updatefile.txt
 		timeout 3
-		goto install
+		goto javaone
 	) else (
 		cls
 		echo Your local repository is up-to-date.
 		timeout 3
-		goto install
+		goto javaone
 	)
 ) else (
 	echo Updates are available. Starting update...
@@ -61,20 +61,110 @@ if %errorlevel% equ 0 (
 	timeout 2.5 /nobreak
 	goto start
 )
+:mcheck
+if not exist %appdata%\.minecraft (
+	echo Minecraft is not installed on the C drive. Please install Minecraft!
+	pause
+	exit /b 1
+)
 	
-:install
-
-:javainstallone
-set JAVA_VERSION=1.8.0_391
-
-for /f "tokens=*" %%i in ('dir /b /s %SystemDrive%\^| findstr /i %JAVA_VERSION%') do (
-    echo Java %JAVA_VERSION% is installed
-    goto :found
+:javaone
+if exist %ProgramFiles%\Java\jre-1.8\bin\java.exe" (
+	goto javatwo
+) else (
+	start /wait %~dp0\Content\Exe\jre-8u391-windows-x64.exe /s
+	if %errorlevel% neq 0 (
+		cls
+		echo Java 1.8 install failed.
+		pause
+		exit /b 1
+	)
+	echo Java 1.8 installed.
+	timeout 2.5 /nobreak
+	goto mcheck
 )
 
-echo Java %JAVA_VERSION% is not installed
-goto :eof
+:javatwo
+if exist %ProgramFiles%Java\jdk-17\bin\java.exe
+	goto versioncheck
+) else (
+	echo Downloading JDK 17.0.9...
+	curl -o "%temp%" "https://download.oracle.com/java/17/archive/jdk-17.0.9_windows-x64_bin.exe"
+	if %errorlevel% neq 0 (
+		echo JDK 17.0.9 has failed download.
+		pause
+		exit /b 1
+	)
+	echo Installing JDK 17.0.9...
+	start /wait %temp%\jdk-17.0.9_windows-x64_bin.exe /s
+	if %errorlevel% neq 0 (
+		echo JDK 17.0.9 has failed install.
+		pause
+		exit /b 1
+	)
+	del %temp%\jdk-17.0.9_windows-x64_bin.exe /s
+	echo Java 17.0.9 has installed.
+	timeout 2.5 /nobreak
+	goto mcheck
+)
 
-:found
+:versioncheck
+if exist %appdata%\.minecraft\versions\1.19.2 (
+	goto forgecheck
+) else (
+	echo Copying 1.19.2 folder to .minecraft...
+	xcopy "%~dp0\Content\Folders\versions\1.19.2" "%appdata%\.minecraft\versions"
+	if %errorlevel% neq 0 (
+		echo Version install failed.
+		pause
+		exit /b 1
+	)
+	echo Version installed!
+	timeout 2.5 /nobreak
+	goto mcheck
+)
+
+:forgecheck
+if exist %appdata%\.minecraft\versions\forge-1.19.2-43.3.7
+	goto install
+) else (
+	java -jar %~dp0\Content\Folders\Exe\forge-1.19.2-43.3.7-installer.jar --installClient
+	if %errorlevel% neq 0 (
+		echo Forge failed to install.
+		pause
+		exit /b 1
+	)
+	echo Forge has installed.
+	goto mcheck
+)
+
+:install
+echo Deleting configs...
+del "%appdata%\.minecraft\config" /s
+echo Deleted configs.
+echo Deleting mods...
+del "%appdata%\.minecraft\mods" /s
+echo Deleted mods
+echo Deleting resourcepacks...
+del "%appdata%\.minecraft\resourcepacks" /s
+echo Deleted resourcepacks.
+echo Deleting shaderpacks...
+del "%appdata%\.minecraft\shaderpacks" /s
+echo Deleted shaderpacks.
+echo Copying configs...
+copy "%~dp0\Content\.minecraft\config" "%appdata%\.minecraft"
+echo Copied configs.
+echo Copying mods...
+copy "%~dp0\Content\.minecraft\mods" "%appdata%\.minecraft"
+echo Copied mods.
+echo Copying resourcepacks...
+copy "%~dp0\Content\.minecraft\resourcepacks" "%appdata%\.minecraft"
+echo Copied resourcepacks.
+echo Copying shaderpacks...
+copy "%~dp0\Content\.minecraft\shaderpacks" "%appdata%\.minecraft"
+echo Copied shaderpacks.
+cls
+echo Install completed.
+timeout 3 /nobreak
 pause
 exit /b 0

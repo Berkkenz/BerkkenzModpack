@@ -63,6 +63,18 @@ if %errorlevel% equ 0 (
 )
 	
 :install
-echo WIP test
+
+:javainstallone
+set JAVA_VERSION=1.8.0_391
+
+for /f "tokens=*" %%i in ('dir /b /s %SystemDrive%\^| findstr /i %JAVA_VERSION%') do (
+    echo Java %JAVA_VERSION% is installed
+    goto :found
+)
+
+echo Java %JAVA_VERSION% is not installed
+goto :eof
+
+:found
 pause
 exit /b 0

@@ -43,7 +43,7 @@ git diff --quiet HEAD origin/main
 if %errorlevel% equ 0 (
 echo diff worked %errorlevel%
 pause
-	if exist %gitfile% (
+	if exist "%temp%\gitresetfile.txt" (
 		echo Update completed, continuing install...
 		timeout 3
 		pause

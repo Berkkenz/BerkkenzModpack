@@ -39,11 +39,11 @@ git diff --quiet HEAD origin/main
 if %errorlevel% equ 0 (
 	if exist %gitfile% (
 		echo Update completed, continuing install...
-		timeout 3 /nobreak
+		timeout 3
 		goto install
 	) else (
 		echo Your local repository is up-to-date.
-		timeout 3 /nobreak
+		timeout 3
 		goto install
 	)
 ) else (

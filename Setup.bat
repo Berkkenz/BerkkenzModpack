@@ -113,7 +113,7 @@ if exist %ProgramFiles%Java\jdk-17\bin\java.exe
 )
 
 :versioncheck
-if exist %appdata%\.minecraft\versions\1.19.2 (
+if exist "%appdata%\.minecraft\versions\1.19.2 (
 	echo Version installed.
 	goto forgecheck
 ) else (
@@ -130,7 +130,7 @@ if exist %appdata%\.minecraft\versions\1.19.2 (
 )
 
 :forgecheck
-if exist %appdata%\.minecraft\versions\forge-1.19.2-43.3.7
+if exist %appdata%\.minecraft\versions\forge-1.19.2-43.3.7 (
 	echo Forge installed.
 	pause
 	goto install

@@ -10,4 +10,4 @@ if %errorlevel% neq 0 (
 	echo Forge failed to install.
 	pause
 	exit /b 1
-)d
+)

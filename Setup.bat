@@ -67,9 +67,12 @@ if not exist %appdata%\.minecraft (
 	pause
 	exit /b 1
 )
+echo Minecraft installed.
 pause
 :javaone
 if exist %ProgramFiles%\Java\jre-1.8\bin\java.exe" (
+	echo Java 1.8 installed
+	pause
 	goto javatwo
 ) else (
 	start /wait %~dp0\Content\Exe\jre-8u391-windows-x64.exe /s
@@ -86,6 +89,8 @@ if exist %ProgramFiles%\Java\jre-1.8\bin\java.exe" (
 
 :javatwo
 if exist %ProgramFiles%Java\jdk-17\bin\java.exe
+	echo Java 17.0.9 installed.
+	pause
 	goto versioncheck
 ) else (
 	echo Downloading JDK 17.0.9...
@@ -110,6 +115,8 @@ if exist %ProgramFiles%Java\jdk-17\bin\java.exe
 
 :versioncheck
 if exist %appdata%\.minecraft\versions\1.19.2 (
+	echo Version installed.
+	pause
 	goto forgecheck
 ) else (
 	echo Copying 1.19.2 folder to .minecraft...
@@ -119,13 +126,15 @@ if exist %appdata%\.minecraft\versions\1.19.2 (
 		pause
 		exit /b 1
 	)
-	echo Version installed!
+	echo Version installed.
 	timeout 2.5 /nobreak
 	goto mcheck
 )
 
 :forgecheck
 if exist %appdata%\.minecraft\versions\forge-1.19.2-43.3.7
+	echo Forge installed.
+	pause
 	goto install
 ) else (
 	java -jar %~dp0\Content\Folders\Exe\forge-1.19.2-43.3.7-installer.jar --installClient

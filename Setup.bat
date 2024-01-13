@@ -33,7 +33,7 @@ if not exist ".git" (
 git status -uno | findstr "Your branch is behind
 
 if %errorlevel% equ 0 (
-	git pull
+	git pull origin main --force
 	pause
 ) else (
     echo Updates are available. Downloading...

@@ -24,6 +24,12 @@ if %errorlevel% equ 0 (
 	)
 )
 
+if not exist %systemroot%\System32\curl.exe (
+	echo Curl not installed. Contact Berkken mans.
+	pause
+	exit /b 1
+)
+
 :githubcheck
 cls
 cd /d %~dp0

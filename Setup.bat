@@ -116,7 +116,6 @@ if exist %ProgramFiles%Java\jdk-17\bin\java.exe
 :versioncheck
 if exist %appdata%\.minecraft\versions\1.19.2 (
 	echo Version installed.
-	pause
 	goto forgecheck
 ) else (
 	echo Copying 1.19.2 folder to .minecraft...

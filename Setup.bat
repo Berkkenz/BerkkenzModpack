@@ -7,15 +7,14 @@ echo %errorlevel%
 if %errorlevel% equ 0 (
 	echo Git is already installed.
 	goto githubcheck
-)
-
-echo Git is not installed. Downloading Git...
-powershell -command "Invoke-WebRequest -Uri 'https://github.com/git-for-windows/git/releases/download/v2.34.1.windows.1/Git-2.34.1-64-bit.exe' -OutFile 'GitInstaller.exe'"
-echo Installing Git...
-start /wait GitInstaller.exe /VERYSILENT /NORESTART
-del GitInstaller.exe
-echo Git installed successfully.
-goto end_script
+) else (
+	echo Git is not installed. Downloading Git...
+	powershell -command "Invoke-WebRequest -Uri 'https://github.com/git-for-windows/git/releases/download/v2.34.1.windows.1/Git-2.34.1-64-bit.exe' -OutFile 'GitInstaller.exe'"
+	echo Installing Git...
+	start /wait GitInstaller.exe /VERYSILENT /NORESTART
+	del GitInstaller.exe
+	echo Git installed successfully.
+	goto end_script
 
 :githubcheck
 cls
@@ -36,15 +35,16 @@ if %errorlevel% equ 0 (
 ) else (
 	echo Updates are available. Starting update...
 	git reset --hard origin/main
+	if %errorlevel% neq 0 (
+		echo Git reset failed.
+		pause
+		exit /b 1
+	)
 	git clean -fd
-if %errorlevel% equ 0 (
-	echo Git reset failed.
+	if %errorlevel% neq 0 (
+	echo Git clean failed.
 	pause
 	exit /b 1
-) else (
-	echo Update complete!
-	pause
-)
 
 echo Update complete. This is also a test
 

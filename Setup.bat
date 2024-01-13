@@ -37,9 +37,10 @@ git fetch origin main
 
 git diff --quiet HEAD origin/main
 if %errorlevel% equ 0 (
-	if exist "%temp%\gitresetfile.txt" (
+	if exist "%temp%\updatefile.txt" (
 		echo Update completed, continuing install...
 		timeout 3
+		del "%temp%\updatefile.txt" /s
 		goto install
 	) else (
 		echo Your local repository is up-to-date.
@@ -54,7 +55,7 @@ if %errorlevel% equ 0 (
 	
 	git clean -fd
 	echo Update installed, restarting
-	set "gitfile=%temp%\gitresetfile.txt"
+	echo UpdateFile > %temp%\updatefile.txt"
 	timeout 2.5 /nobreak
 	goto start
 )

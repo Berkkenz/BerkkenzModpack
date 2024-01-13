@@ -93,7 +93,10 @@ if not exist "%ProgramFiles%\Java\jre-1.8\bin\java.exe" (
 		echo Java 1.8 install failed.
 		pause
 		exit /b 1
-	)
+	) else (
+		echo Java 1.8 installed.
+		pause
+		goto mcheck
 ) else (
 	echo Installed.
 	pause

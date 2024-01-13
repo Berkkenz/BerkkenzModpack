@@ -43,7 +43,7 @@ if %errorlevel% equ 0 (
 ) else (
 	echo Updates are available. Starting update...
 	git reset --hard origin/main
-		echo Git reset failed, continuing...
+		echo Update installed, restarting
 		timeout 2.5 /nobreak
 		goto start
 	)
@@ -55,9 +55,3 @@ if %errorlevel% equ 0 (
 		exit /b 1
 	)
 )
-
-echo Update complete. This is a test
-
-:end_script
-pause
-exit /b

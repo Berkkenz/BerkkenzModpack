@@ -37,9 +37,12 @@ echo before git fetch
 git fetch origin main
 echo after git fetch
 pause
-
+git config --list
+pause
 git diff --quiet HEAD origin/main
 if %errorlevel% equ 0 (
+echo diff worked %errorlevel%
+pause
 	if exist %gitfile% (
 		echo Update completed, continuing install...
 		timeout 3

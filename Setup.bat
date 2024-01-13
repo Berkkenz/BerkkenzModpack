@@ -38,11 +38,13 @@ git fetch origin main
 git diff --quiet HEAD origin/main
 if %errorlevel% equ 0 (
 	if exist "%temp%\updatefile.txt" (
+		cls
 		echo Update completed, continuing install...
 		del %temp%\updatefile.txt
 		timeout 3
 		goto install
 	) else (
+		cls
 		echo Your local repository is up-to-date.
 		timeout 3
 		goto install

@@ -78,24 +78,28 @@ if not exist %appdata%\.minecraft (
 
 echo Minecraft installed.
 :javaone
-if exist %programfiles%\Java\jre-1.8\bin\java.exe" (
-	for /f "tokens=*" %%i in ('%programfiles%\Java\jre-1.8\bin\java.exe -version 2^>^%1') do set JAVA_VERSION=%%i
-	echo %JAVA_VERSION% | findstr /C: "1.8.0_391" > nul
-	if %errorlevel% == 0 (
-		echo Java JRE 1.8.0_391 is installed.
-	) else (
-		echo Java JRE 1.8.0_391 is not installed or not the correct version.
+cls
+if exist %ProgramFiles%\Java\jre-1.8\bin\java.exe (
+	echo Java Runetime 1.8.0_391 already installed.
+	pause
+	goto javatwo
+) else (
+	echo Starting Java 1.8 install...
+	timeout 2.5
+	start /wait %~dp0\Content\Exe\jre-8u391-windows-x64.exe /s
+	if %errorlevel% neq 0 (
+		echo Java install failed.
 		pause
 		exit /b 1
 	)
-) else (
-	echo Java JRE 1.8.0_391 Executable is not found.
+	
+	echo Java Runtime 1.8.0_391 installed.
 	pause
-	exit /b 1
+	goto mcheck
 )
 
 :javatwo
-if exist %ProgramFiles%Java\jdk-17\bin\java.exe
+if exist %ProgramFiles%\Java\jdk-17\bin\java.exe (
 	echo Java 17.0.9 installed.
 	goto versioncheck
 ) else (
@@ -113,7 +117,7 @@ if exist %ProgramFiles%Java\jdk-17\bin\java.exe
 		pause
 		exit /b 1
 	)
-	del %temp%\jdk-17.0.9_windows-x64_bin.exe /s
+	del /f /q "%temp%\jdk-17.0.9_windows-x64_bin.exe"
 	echo Java 17.0.9 has installed.
 	timeout 2.5 /nobreak
 	goto mcheck

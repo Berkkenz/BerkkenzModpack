@@ -163,16 +163,16 @@ if exist %appdata%\.minecraft\versions\1.19.2-forge-43.3.7 (
 
 :install
 echo Deleting configs...
-del /f /q "%appdata%\.minecraft\config"
+del /f "%appdata%\.minecraft\config" /q
 echo Deleted configs.
 echo Deleting mods...
-del /f /q "%appdata%\.minecraft\mods"
+del /f "%appdata%\.minecraft\mods" /q
 echo Deleted mods
 echo Deleting resourcepacks...
-del /f /q "%appdata%\.minecraft\resourcepacks"
+del /f "%appdata%\.minecraft\resourcepacks" /q
 echo Deleted resourcepacks.
 echo Deleting shaderpacks...
-del /f /q "%appdata%\.minecraft\shaderpacks"
+del /f "%appdata%\.minecraft\shaderpacks" /q
 echo Deleted shaderpacks.
 echo Copying configs...
 xcopy /Y "%~dp0\Content\.minecraft\config" "%appdata%\.minecraft\config"

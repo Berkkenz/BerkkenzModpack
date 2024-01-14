@@ -131,7 +131,7 @@ if exist %appdata%\.minecraft\versions\1.19.2 (
 	goto forgecheck
 ) else (
 	echo Copying 1.19.2 folder to .minecraft...
-	xcopy "%~dp0\Content\Folders\versions\1.19.2" "%appdata%\.minecraft\versions"
+	xcopy /Y "%~dp0\Content\Folders\versions\1.19.2" "%appdata%\.minecraft\versions"
 	if %errorlevel% neq 0 (
 		echo Version install failed.
 		pause
@@ -143,10 +143,12 @@ if exist %appdata%\.minecraft\versions\1.19.2 (
 )
 
 :forgecheck
-if exist "%appdata%\.minecraft\versions\1.19.2-forge-43.3.7" (
+if exist %appdata%\.minecraft\versions\1.19.2-forge-43.3.7 (
 	echo Forge installed.
 	goto install
 ) else (
+	cls
+	echo Installing forge...
 	call "%~dp0\Content\Exe\forgefile.bat"
 	if exist "%~dp0\forge-1.19.2-43.3.7-installer.jar.log" del "%~dp0\forge-1.19.2-43.3.7-installer.jar.log"
 	if %errorlevel% neq 0 (

@@ -85,9 +85,13 @@ if exist %programfiles%\Java\jre-1.8\bin\java.exe" (
 		echo Java JRE 1.8.0_391 is installed.
 	) else (
 		echo Java JRE 1.8.0_391 is not installed or not the correct version.
+		pause
+		exit /b 1
 	)
 ) else (
 	echo Java JRE 1.8.0_391 Executable is not found.
+	pause
+	exit /b 1
 )
 
 :javatwo

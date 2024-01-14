@@ -104,7 +104,7 @@ if exist "C:\Program Files\Java\jdk-17\bin\java.exe" (
 	goto versioncheck
 ) else (
 	echo Downloading JDK 17.0.9...
-	curl -o "%temp%" "https://download.oracle.com/java/17/archive/jdk-17.0.9_windows-x64_bin.exe"
+	curl -o "%temp%\jdk-17.0.9_windows-x64_bin" "https://download.oracle.com/java/17/latest/jdk-17_windows-x64_bin.exe"
 	if %errorlevel% neq 0 (
 		echo JDK 17.0.9 has failed download.
 		pause

@@ -148,8 +148,14 @@ if exist %appdata%\.minecraft\versions\1.19.2-forge-43.3.7 (
 	goto install
 ) else (
 	cls
-	echo Installing forge...
-	call "%~dp0\Content\Exe\forgefile.bat"
+	echo %cd%
+	pause
+	java -jar %~dp0\Content\Exe\forge-1.19.2-43.3.7-installer.jar
+	if %errorlevel% neq 0 (
+		echo Forge install failed.
+		pause
+		exit /b 1
+	)
 	if exist "%~dp0\forge-1.19.2-43.3.7-installer.jar.log" del "%~dp0\forge-1.19.2-43.3.7-installer.jar.log"
 	if %errorlevel% neq 0 (
 		echo Forge install failed.

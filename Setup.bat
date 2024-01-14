@@ -79,7 +79,7 @@ if not exist %appdata%\.minecraft (
 echo Minecraft installed.
 :javaone
 cls
-if exist %ProgramFiles%\Java\jre-1.8\bin\java.exe (
+if exist "C:\Program Files\Java\jre-1.8\bin\java.exe" (
 	echo Java Runetime 1.8.0_391 already installed.
 	pause
 	goto javatwo
@@ -99,7 +99,7 @@ if exist %ProgramFiles%\Java\jre-1.8\bin\java.exe (
 )
 
 :javatwo
-if exist %ProgramFiles%\Java\jdk-17\bin\java.exe (
+if exist "C:\Program Files\Java\jdk-17\bin\java.exe" (
 	echo Java 17.0.9 installed.
 	goto versioncheck
 ) else (

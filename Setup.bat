@@ -96,7 +96,7 @@ if exist "C:\Program Files\Java\jre-1.8\bin\java.exe" (
 	)
 	
 	echo Java Runtime 1.8.0_391 installed.
-	pause
+	timeout 2
 	goto mcheck
 )
 

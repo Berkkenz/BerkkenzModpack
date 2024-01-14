@@ -150,7 +150,7 @@ if exist %appdata%\.minecraft\versions\1.19.2-forge-43.3.7 (
 	cls
 	echo %cd%
 	pause
-	java -jar %~dp0\Content\Exe\forge-1.19.2-43.3.7-installer.jar
+	java -jar %~dp0\Content\Exe\forge-1.19.2-43.3.7-installer.jar --installClient
 	if %errorlevel% neq 0 (
 		echo Forge install failed.
 		pause

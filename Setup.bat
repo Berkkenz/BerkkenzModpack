@@ -88,6 +88,7 @@ if exist %programfiles%\Java\jre-1.8\bin\java.exe" (
 	)
 ) else (
 	echo Java JRE 1.8.0_391 Executable is not found.
+)
 
 :javatwo
 if exist %ProgramFiles%Java\jdk-17\bin\java.exe

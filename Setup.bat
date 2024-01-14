@@ -66,7 +66,7 @@ if %errorlevel% equ 0 (
 	cls
 	echo Update installed, restarting
 	echo UpdateFile > %temp%\updatefile.txt
-	timeout 2 /nobreak
+	timeout 2
 	goto start
 )
 :mcheck
@@ -148,10 +148,8 @@ if exist %appdata%\.minecraft\versions\1.19.2-forge-43.3.7 (
 	goto install
 ) else (
 	cls
-	echo %cd%
-	pause
+	echo Installing forge...
 	java -jar %~dp0\Content\Exe\forge-1.19.2-43.3.7-installer.jar /s
-	pause
 	if %errorlevel% neq 0 (
 		echo Forge install failed.
 		pause
@@ -165,6 +163,7 @@ if exist %appdata%\.minecraft\versions\1.19.2-forge-43.3.7 (
 	)
 	
 	echo Forge has installed.
+	timeout 2
 	goto mcheck
 )
 

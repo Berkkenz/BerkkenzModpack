@@ -195,4 +195,5 @@ echo Copied shaderpacks.
 cls
 echo Install completed. Exiting...
 timeout 3 /nobreak
+endlocal
 exit /b 0

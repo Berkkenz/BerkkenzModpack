@@ -131,7 +131,7 @@ if exist %appdata%\.minecraft\versions\1.19.2 (
 	goto forgecheck
 ) else (
 	echo Copying 1.19.2 folder to .minecraft...
-	xcopy /Y "%~dp0\Content\Folders\versions\1.19.2" "%appdata%\.minecraft\versions"
+	xcopy /i /s "%~dp0\Content\Folders\versions\1.19.2" "%appdata%\.minecraft\versions\1.19.2"
 	if %errorlevel% neq 0 (
 		echo Version install failed.
 		pause

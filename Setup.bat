@@ -65,7 +65,7 @@ if %errorlevel% equ 0 (
 	git clean -fd
 	echo Update installed, restarting
 	echo UpdateFile > %temp%\updatefile.txt
-	timeout 2.5 /nobreak
+	timeout 2 /nobreak
 	goto start
 )
 :mcheck
@@ -85,7 +85,7 @@ if exist "C:\Program Files\Java\jre-1.8\bin\java.exe" (
 	goto javatwo
 ) else (
 	echo Starting Java 1.8 install...
-	timeout 2.5
+	timeout 2
 	start /wait %~dp0\Content\Exe\jre-8u391-windows-x64.exe /s
 	if %errorlevel% neq 0 (
 		echo Java install failed.
@@ -119,7 +119,7 @@ if exist "C:\Program Files\Java\jdk-17\bin\java.exe" (
 	)
 	del /f /q "%temp%\jdk-17.0.9_windows-x64_bin.exe"
 	echo Java 17.0.9 has installed.
-	timeout 2.5 /nobreak
+	timeout 2 /nobreak
 	goto mcheck
 )
 
@@ -136,7 +136,7 @@ if exist %appdata%\.minecraft\versions\1.19.2 (
 		exit /b 1
 	)
 	echo Version installed.
-	timeout 2.5 /nobreak
+	timeout 2 /nobreak
 	goto mcheck
 )
 

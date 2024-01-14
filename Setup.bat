@@ -63,6 +63,7 @@ if %errorlevel% equ 0 (
 	git reset --hard origin/main
 	
 	git clean -fd
+	cls
 	echo Update installed, restarting
 	echo UpdateFile > %temp%\updatefile.txt
 	timeout 2 /nobreak
@@ -81,11 +82,12 @@ echo Minecraft installed.
 cls
 if exist "C:\Program Files\Java\jre-1.8\bin\java.exe" (
 	echo Java Runetime 1.8.0_391 already installed.
-	pause
 	goto javatwo
 ) else (
 	echo Starting Java 1.8 install...
 	timeout 2
+	cls
+	echo Installing Java 1.8.0_391...
 	start /wait %~dp0\Content\Exe\jre-8u391-windows-x64.exe /s
 	if %errorlevel% neq 0 (
 		echo Java install failed.

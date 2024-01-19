@@ -177,6 +177,9 @@ echo Deleted mods
 echo Deleting resourcepacks...
 del /f "%appdata%\.minecraft\resourcepacks" /q
 echo Deleted resourcepacks.
+echo Deleting options...
+del /f "%appdata%\.minecraft\options.txt" /q
+echo Deleted mods
 echo Deleting shaderpacks...
 del /f "%appdata%\.minecraft\shaderpacks" /q
 echo Deleted shaderpacks.
@@ -189,6 +192,9 @@ echo Copied mods.
 echo Copying resourcepacks...
 xcopy /Y "%~dp0\Content\.minecraft\resourcepacks" "%appdata%\.minecraft\resourcepacks"
 echo Copied resourcepacks.
+echo Copying options...
+xcopy /Y "%~dp0\Content\Folders\misc\options.txt" "%appdata%\.minecraft"
+echo Copied options.
 echo Copying shaderpacks...
 xcopy /Y "%~dp0\Content\.minecraft\shaderpacks" "%appdata%\.minecraft\shaderpacks"
 echo Copied shaderpacks.
